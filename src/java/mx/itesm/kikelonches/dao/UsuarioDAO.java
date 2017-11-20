@@ -94,18 +94,6 @@ public class UsuarioDAO {
         stmnt.close();
     }
     
-    public List getRolesFromUsuarioByID(int ID) throws SQLException{
-        List<RolVO> list = new ArrayList<RolVO>();
-        PreparedStatement ps = db.conn.prepareStatement("select Roles.RolID, Roles.Nombre, Roles.Descripcion from Roles join RolUsuario on Roles.RolID = RolUsuario.RolID where UsuarioID = ?;");
-        ps.setInt(1, ID);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next())     
-            list.add(new RolVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
-        rs.close();
-        ps.close();
-        return list;
-    }
-    
     public List getUsuariosByRolID(int RolID) throws SQLException{
         List<UsuarioVO> list = new ArrayList<UsuarioVO>();
         PreparedStatement ps = db.conn.prepareStatement("select Usuarios.UsuarioID, Usuarios.Username, Usuarios.Password, Usuarios.Correo from Usuarios join RolUsuario on Usuarios.UsuarioID = RolUsuario.UsuarioID where RolID = ?;");
@@ -117,6 +105,4 @@ public class UsuarioDAO {
         ps.close();
         return list;
     }
-    
-    
 }
