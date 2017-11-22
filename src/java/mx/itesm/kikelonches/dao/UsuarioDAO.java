@@ -105,4 +105,19 @@ public class UsuarioDAO {
         ps.close();
         return list;
     }
+    
+    public int getIdByEmail(String Correo) throws SQLException{
+        PreparedStatement stmnt = db.conn.prepareStatement("select Usuarios.UsuarioID FROM Usuarios where Correo = ?;");
+        stmnt.setString(1, Correo);
+        ResultSet rs = stmnt.executeQuery();
+        UsuarioVO usuario;
+        if(rs.next())
+            usuario = new UsuarioVO(rs.getInt(1), rs.getString(2), rs.getString(3), Correo);
+        else
+            usuario = null;
+        stmnt.close();
+        rs.close();
+        return usuario.getUsuarioID();
+        
+    }
 }

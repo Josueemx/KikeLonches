@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DBConnection {
     
     private String Username = "root";
-    private String Password = "root";
+    private String Password = "admin";
     private String Port = "3306";
     private final String DBName = "kikelonches";
     public Connection conn;
