@@ -93,7 +93,7 @@ public class ProductoDAO {
     
     public List getAllProductos() throws SQLException{
         List<ProductoVO> list = new ArrayList<ProductoVO>();
-        PreparedStatement ps = db.conn.prepareStatement("select * from Productos")
+        PreparedStatement ps = db.conn.prepareStatement("select * from Productos;");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) 
             list.add(new ProductoVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5)));

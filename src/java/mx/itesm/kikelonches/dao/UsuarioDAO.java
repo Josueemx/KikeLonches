@@ -59,6 +59,35 @@ public class UsuarioDAO {
         return usuario;
     }
     
+    public UsuarioVO getUsuarioByCorreo(String Correo) throws SQLException{
+        PreparedStatement ps = db.conn.prepareStatement("SELECT * FROM Usuarios where Correo = ?;");
+        ps.setString(1, Correo);
+        ResultSet rs = ps.executeQuery();
+        UsuarioVO usuario;
+        if(rs.next())
+            usuario = new UsuarioVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+        else
+            usuario = null;
+        ps.close();
+        rs.close();
+        return usuario;
+    }
+    
+    public UsuarioVO getUsuarioByUsernameAndPassword(String Username, String Password) throws SQLException{
+        PreparedStatement ps = db.conn.prepareStatement("SELECT * FROM Usuarios where Username = ? and Password = ?;");
+        ps.setString(1, Username);
+        ps.setString(2, Password);
+        ResultSet rs = ps.executeQuery();
+        UsuarioVO usuario;
+        if(rs.next())
+            usuario = new UsuarioVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+        else
+            usuario = null;
+        ps.close();
+        rs.close();
+        return usuario;
+    }
+    
     public void deleteUsuarioByID(int ID) throws SQLException{
         PreparedStatement preparedStmt = db.conn.prepareStatement("delete from Usuarios where UsuarioID = ?;");
         preparedStmt.setInt(1, ID);
@@ -106,6 +135,17 @@ public class UsuarioDAO {
         return list;
     }
     
+    public List getAllUsuarios() throws SQLException{
+        List<UsuarioVO> list = new ArrayList<UsuarioVO>();
+        PreparedStatement ps = db.conn.prepareStatement("select * from Usuarios;");
+        ResultSet rs = ps.executeQuery();
+        while (rs.next())     
+            list.add(new UsuarioVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+        rs.close();
+        ps.close();
+        return list;
+    }
+    
     public int getIdByEmail(String Correo) throws SQLException{
         PreparedStatement stmnt = db.conn.prepareStatement("select Usuarios.UsuarioID FROM Usuarios where Correo = ?;");
         stmnt.setString(1, Correo);
@@ -118,6 +158,5 @@ public class UsuarioDAO {
         stmnt.close();
         rs.close();
         return usuario.getUsuarioID();
-        
     }
 }

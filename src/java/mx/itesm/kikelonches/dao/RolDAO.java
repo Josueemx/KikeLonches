@@ -99,4 +99,15 @@ public class RolDAO {
         ps.close();
         return list;
     }
+    
+    public List getAllRoles() throws SQLException{
+        List<RolVO> list = new ArrayList<RolVO>();
+        PreparedStatement ps = db.conn.prepareStatement("select * form Roles;");
+        ResultSet rs = ps.executeQuery();
+        while (rs.next())     
+            list.add(new RolVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+        rs.close();
+        ps.close();
+        return list;
+    }
 }

@@ -76,7 +76,30 @@ public class OrdenDAO {
         preparedStmt.close();
     }
     
-    public List getOrdenByDate(String Fecha){
+    public List getOrdenesFromUsuarioByUsuarioID(int UsuarioID) throws SQLException{
+        List<OrdenVO> list = new ArrayList<OrdenVO>();
+        PreparedStatement ps = db.conn.prepareStatement("select * from Orden where UsuarioID = ?;");
+        ps.setInt(1, UsuarioID);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) 
+            list.add(new OrdenVO(rs.getInt(1), UsuarioID, rs.getString(3), rs.getDouble(4)));
+        rs.close();
+        ps.close();
+        return list;
+    }
+    
+    public List getAllOrdenes() throws SQLException{
+        List<OrdenVO> list = new ArrayList<OrdenVO>();
+        PreparedStatement ps = db.conn.prepareStatement("select * from Orden;");
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) 
+            list.add(new OrdenVO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4)));
+        rs.close();
+        ps.close();
+        return list;
+    }
+
+    public List getOrdenByDate(String Fecha) throws SQLException{
         List<OrdenVO> list = new ArrayList<OrdenVO>();
         PreparedStatement ps = db.conn.prepareStatement("select * from Orden where Fecha = ?;");
         ps.setString(1, Fecha);

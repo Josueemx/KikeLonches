@@ -3,10 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/manager/OrdenManager.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/servlets/GetAllProductosServlet.java</file>
             <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/dao/ProductoDAO.java</file>
-            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/dao/RolDAO.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/dao/CarritoDAO.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/servlets/GetAllUsuariosServlet.java</file>
             <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/dao/OrdenDAO.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/servlets/LoginServlet.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/servlets/AddUsuarioServlet.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/manager/ProductManager.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/servlets/AddProductServlet.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/manager/UserManager.java</file>
             <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/dao/UsuarioDAO.java</file>
+            <file>file:/Users/Morales/Documents/Escuela/7moSemestre/AppsWeb/Final/Proyecto/KikeLonches/src/java/mx/itesm/kikelonches/manager/CarritoManager.java</file>
         </group>
     </open-files>
 </project-private>
