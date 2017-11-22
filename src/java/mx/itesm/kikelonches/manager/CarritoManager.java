@@ -5,8 +5,6 @@
  */
 package mx.itesm.kikelonches.manager;
 import java.sql.SQLException;
-import java.util.List;
-import mx.itesm.kikelonches.util.DBConnection;
 import mx.itesm.kikelonches.dao.CarritoDAO;
 import mx.itesm.kikelonches.vo.CarritoVO;
 /**
@@ -14,30 +12,23 @@ import mx.itesm.kikelonches.vo.CarritoVO;
  * @author Dell
  */
 public class CarritoManager {
-    
-    private CarritoDAO carritoDAO;
-    
-    public CarritoManager() throws SQLException, ClassNotFoundException{
-        carritoDAO = new CarritoDAO(new DBConnection());
+    public void insertCarrito(int OrdenID, int ProductoID, int Cantidad, double Precio){
+        CarritoDAO dao = new CarritoDAO();
+        dao.insertCarrito(OrdenID, ProductoID, Cantidad, Precio);
     }
     
-    public CarritoManager(DBConnection dBConnection) throws SQLException, ClassNotFoundException{
-        carritoDAO = new CarritoDAO(dBConnection);
+    public List<CarritoVO> getFullCarrito(int OrdenID){
+        CarritoDAO dao = new CarritoDAO();
+        return dao.getFullCarritoByOrdenID(OrdenID)
     }
     
-    public void insertCarrito(int OrdenID, int ProductoID, int Cantidad, double Precio) throws SQLException{
-        carritoDAO.insertCarrito(OrdenID, ProductoID, Cantidad, Precio);
+    public void deletItem(int OrdenID, int ItemID){
+        CarritoDAO dao = new CarritoDAO();
+        dao.deleteCarritoByOrdenIDAndProductoID(OrdenID, OrdenID);
     }
     
-    public List<CarritoVO> getFullCarrito(int OrdenID) throws SQLException{
-        return carritoDAO.getFullCarritoByOrdenID(OrdenID);
-    }
-    
-    public void deletItem(int OrdenID, int ItemID) throws SQLException{
-        carritoDAO.deleteCarritoByOrdenIDAndProductoID(OrdenID, OrdenID);
-    }
-    
-    public void updateItem(int OrdenID, int ProductoID, int Cantidad, double Precio) throws SQLException{
-        carritoDAO.updateCarritoByOrdenIDAndProductoID(OrdenID, ProductoID, Cantidad, Precio);
+    public void updateItem(int OrdenID, int ProductoID, int Cantidad, double Precio){
+        CarritoDAO dao = new CarritoDAO();
+        dao.updateCarritoByOrdenIDAndProductoID(OrdenID, ProductoID, Cantidad, Precio);
     }
 }

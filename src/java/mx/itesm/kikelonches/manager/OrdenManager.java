@@ -7,33 +7,24 @@ package mx.itesm.kikelonches.manager;
 import java.sql.SQLException;
 import java.util.List;
 import mx.itesm.kikelonches.dao.OrdenDAO;
-import mx.itesm.kikelonches.util.DBConnection;
 import mx.itesm.kikelonches.vo.OrdenVO;
 /**
  *
  * @author Dell
  */
 public class OrdenManager {
-    
-    private OrdenDAO ordenDAO;
-    
-    public OrdenManager() throws SQLException, ClassNotFoundException{
-        ordenDAO = new OrdenDAO(new DBConnection());
+    public void newOrden(int UsuarioID, String Fecha, double PrecioFinal){
+        OrdenDAO dao = new OrdenDAO();
+        dao.insertOrden(UsuarioID, Fecha, PrecioFinal);
     }
     
-    public OrdenManager(DBConnection dBConnection) throws SQLException, ClassNotFoundException{
-        ordenDAO = new OrdenDAO(dBConnection);
+    public List<OrdenVO> ordenByDate(String Fecha){
+        OrdenDAO dao = new OrdenDAO();
+        return dao.getOrdenByDate(Fecha);
     }
     
-    public void newOrden(int UsuarioID, String Fecha, double PrecioFinal) throws SQLException{
-        ordenDAO.insertOrden(UsuarioID, Fecha, PrecioFinal);
-    }
-    
-    public List<OrdenVO> ordenByDate(String Fecha) throws SQLException{
-        return ordenDAO.getOrdenByDate(Fecha);
-    }
-    
-    public void updateOrden(int ID, int UsuarioID, String Fecha, double PrecioFinal) throws SQLException{
-        ordenDAO.updateOrdenByID(ID, UsuarioID, Fecha, PrecioFinal);
+    public void updateOrden(int ID, int UsuarioID, String Fecha, double PrecioFinal){
+        OrdenDAO dao = new OrdenDAO();
+        dao.updateOrdenByID(ID, UsuarioID, Fecha, PrecioFinal);
     }
 }
