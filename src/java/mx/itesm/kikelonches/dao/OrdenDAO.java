@@ -8,6 +8,8 @@ package mx.itesm.kikelonches.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import mx.itesm.kikelonches.util.DBConnection;
 import mx.itesm.kikelonches.vo.OrdenVO;
 
@@ -72,5 +74,17 @@ public class OrdenDAO {
         preparedStmt.setInt(4, ID);
         preparedStmt.executeUpdate();
         preparedStmt.close();
+    }
+    
+    public List getOrdenByDate(String Fecha){
+        List<OrdenVO> list = new ArrayList<OrdenVO>();
+        PreparedStatement ps = db.conn.prepareStatement("select * from Orden where Fecha = ?;");
+        ps.setString(1, Fecha);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) 
+            list.add(new OrdenVO(rs.getInt(1), rs.getInt(2), Fecha, rs.getDouble(4)));
+        rs.close();
+        ps.close();
+        return list;
     }
 }
